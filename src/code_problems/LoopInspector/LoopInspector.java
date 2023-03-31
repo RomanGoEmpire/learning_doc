@@ -12,19 +12,21 @@ public class LoopInspector {
         visited.add(node);
         Node nextNode = node.getNext();
 
+        // find a node that is
         while (!visited.contains(nextNode)) {
             visited.add(nextNode);
             nextNode = nextNode.getNext();
         }
-        // found the one node that is part of the loop
+
+
 
         Node loopNext = nextNode.getNext();
         int counter = 1;
+
         // count the loop
         while (true) {
-            if (nextNode == loopNext) {
-                return counter;
-            }
+            if (nextNode == loopNext) return counter;
+
             counter++;
             loopNext = loopNext.getNext();
         }
